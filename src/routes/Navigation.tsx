@@ -1,13 +1,12 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
-import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyload/pages'
 import { routes } from './routes'
 
 import logo from '../logo.svg'
 
 export const Navigation = () => {
     const activateLink = (active: boolean) => (active ? 'nav-active' : '')
-    //clase 37
+
     return (
         <BrowserRouter>
             <div className="main-layout">
