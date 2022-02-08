@@ -1,43 +1,23 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-  Redirect,
-} from "react-router-dom";
-
+import { BrowserRouter as Router } from "react-router-dom";
 import logo from "../logo.svg";
-import { routes } from "./routes";
+import { Links } from "../01-lazyload/components/Links/Links";
+import { LinksMatch } from "../01-lazyload/components/LinksMatch/LinksMatch";
+import { Suspense } from "react";
+import { Spinner } from "../01-lazyload/components/Spinner/Spinner";
 
 export const Navigation = () => {
   return (
-    <Router>
-      <div className="main-layout">
-        <nav>
-          <img src={logo} alt="React Logo" />
-          <ul>
-            {routes.map(({ to, name }, index) => (
-              <li key={index + to}>
-                <NavLink to={to} activeClassName="nav-active" exact>
-                  {name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <Suspense fallback={<Spinner />}>
+      <Router>
+        <div className="main-layout">
+          <nav>
+            <img src={logo} alt="React Logo" />
+            <Links />
+          </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          {routes.map(({ path, Component }, index) => (
-            <Route key={index + path} path={path} exact>
-              <Component />
-            </Route>
-          ))}
-
-          <Redirect to={routes[0].path} />
-        </Switch>
-      </div>
-    </Router>
+          <LinksMatch />
+        </div>
+      </Router>
+    </Suspense>
   );
 };
