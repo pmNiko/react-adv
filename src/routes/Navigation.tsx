@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Links } from '../01-lazyload/components/Links/Links'
 import { Spinner } from '../01-lazyload/components/Spinner/Spinner'
 

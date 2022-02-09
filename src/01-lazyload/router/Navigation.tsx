@@ -9,14 +9,14 @@ export const Navigation = () => {
             <h2>LazyLayout Pages</h2>
             <ul>
                 {routes.map(({ pathEnd, name }) => (
-                    <li>
+                    <li key={pathEnd}>
                         <Link to={`${url}${pathEnd}`}> {name}</Link>
                     </li>
                 ))}
             </ul>
             <Switch>
-                {routes.map(({ pathEnd, component: Component }) => (
-                    <Route exact path={`${path}${pathEnd}`}>
+                {routes.map(({ pathEnd, component: Component }, i) => (
+                    <Route key={i + pathEnd} exact path={`${path}${pathEnd}`}>
                         <Component />
                     </Route>
                 ))}
