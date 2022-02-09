@@ -1,11 +1,15 @@
+import { Route } from '../../../routes/routes'
 import { Link } from './Link'
-import { routes } from '../../../routes/routes'
 
-export const Links = () => {
+type Routes = {
+    routes: Route[]
+}
+
+export const Links = ({ routes }: Routes) => {
     return (
         <ul>
-            {routes.map((route, i) => (
-                <Link key={i} {...route} />
+            {routes.map((route: Route) => (
+                <Link key={route.path} {...route} matchExact={false} />
             ))}
         </ul>
     )
