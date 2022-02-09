@@ -5,7 +5,6 @@ type JSXComponent = () => JSX.Element
 
 interface Route {
     path: string
-    to: string
     component: LazyExoticComponent<JSXComponent> | JSXComponent
     name: string
 }
@@ -23,19 +22,16 @@ const LazyPage3 = lazy(
 export const routes: Route[] = [
     {
         path: '/lazy1',
-        to: '/lazy1',
         component: LazyPage1,
         name: 'Lazy Page 1',
     },
     {
         path: '/lazy2',
-        to: '/lazy2',
         component: LazyPage2,
         name: 'Lazy Page 2',
     },
     {
         path: '/lazy3',
-        to: '/lazy3',
         component: LazyPage3,
         name: 'Lazy Page 3',
     },

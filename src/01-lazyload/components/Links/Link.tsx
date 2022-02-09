@@ -1,17 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
 type Props = {
-  index: number;
-  to: string;
-  name: string;
-};
+    path: string
+    name: string
+}
 
-export const Link = ({ index, to, name }: Props) => {
-  return (
-    <li>
-      <NavLink to={to} activeClassName="nav-active" exact>
-        {name}
-      </NavLink>
-    </li>
-  );
-};
+export const Link = ({ path, name }: Props) => {
+    return (
+        <li>
+            <NavLink to={path} activeClassName="nav-active" exact>
+                {name}
+            </NavLink>
+        </li>
+    )
+}
