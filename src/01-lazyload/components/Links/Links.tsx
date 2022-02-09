@@ -5,7 +5,7 @@ export const Links = () => {
     return (
         <ul>
             {routes.map((route, i) => (
-                <Link key={i} index={i} {...route} />
+                <Link key={i} {...route} />
             ))}
         </ul>
     )
