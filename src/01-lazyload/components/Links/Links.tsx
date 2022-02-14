@@ -1,11 +1,12 @@
 import { Route } from '../../../routes/routes'
 import { Link } from './Link'
 
-type Routes = {
-    routes: Route[]
-}
+/* Pueden implementarse de cualquiera de las dos formas */
+// type Routes = {
+//     routes: Route[]
+// }
 
-export const Links = ({ routes }: Routes) => {
+export const Links = ({ routes }: { routes: Route[] }) => {
     return (
         <ul>
             {routes.map((route: Route) => (
