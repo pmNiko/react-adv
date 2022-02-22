@@ -3,24 +3,35 @@ import { Props as ProductTitleProps } from '../components/ProductTitle'
 import { Props as ProductImageProps } from '../components/Productimage'
 import { Props as ProductButtonsProps } from '../components/ProductButtons'
 
-export interface Product {
-    id: string
-    title: string
-    img?: string
-}
-
+/**Interfaz del contexto */
 export interface ProductContextProps {
     counter: number
     increaseBy: (value: number) => void
     product: Product
 }
 
+/**Interfaz de Product */
+export interface Product {
+    id: string
+    title: string
+    img?: string
+}
+
+/**Interfaz de ProductCardHOC extiende 
+ * las propiedades de ProductCard para 
+ * poder utilizar subcomponentes como props.
+ */
 export interface ProductCardHOCProps {
     (Props: ProductCardProps): JSX.Element,
     Title: (Props: ProductTitleProps) => JSX.Element,
     Image: (Props: ProductImageProps) => JSX.Element,
     Buttons: (Props: ProductButtonsProps) => JSX.Element
 }
+
+
+
+
+
 
 
 

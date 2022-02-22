@@ -8,6 +8,11 @@ export interface Props {
     style?: CSSProperties
 }
 
+/**
+ * Interfaz de ProductButtons
+ *   @param className?   string
+ *   @param style?       CSSProperties
+ */
 export const ProductButtons = ({ className, style }: Props) => {
     const { increaseBy, counter } = useContext(ProductContext)
 
@@ -23,10 +28,3 @@ export const ProductButtons = ({ className, style }: Props) => {
         </div>
     )
 }
-
-/* -------------------------- Refactorización ----------------------------------- */
-
-// interface ProductButtonProps {
-//     counter: number
-//     increaseBy: (value: number) => void
-// }

@@ -9,6 +9,12 @@ export interface Props {
     style?: CSSProperties
 }
 
+/**
+ *
+ * @param title? string
+ * @param className? string
+ * @param styles? CSSProperties
+ */
 export const ProductTitle = ({ title, className, style }: Props) => {
     const { product } = useContext(ProductContext)
 

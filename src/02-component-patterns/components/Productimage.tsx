@@ -10,6 +10,12 @@ export interface Props {
     style?: CSSProperties
 }
 
+/**
+ * Componente ProductImage
+ * @param img? string
+ * @param className? string
+ * @param styles? CCSProperties
+ */
 export const ProductImage = ({ img, className, style }: Props) => {
     let imgToShow: string
 
