@@ -1,18 +1,15 @@
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from '../components/'
+import products from '../data/product'
 import '../styles/custom-styles.css'
-
-const product = {
-    id: '1',
-    title: 'Coffee Mug 1',
-    img: './coffee-mug.png',
-}
+import { useShoppingCart } from '../hooks/useShoppingCart'
 
 export const ShoppingPage = () => {
+    const { shoppingCart, onProductCountChange } = useShoppingCart()
+
     return (
         <div>
             <h1>Shopping Store</h1>
             <hr />
-
             <div
                 style={{
                     display: 'flex',
@@ -20,39 +17,54 @@ export const ShoppingPage = () => {
                     flexWrap: 'wrap',
                 }}
             >
-                {/* Técnica 2 Subcomponentes como propiedades del componente padre */}
-                <ProductCard product={product} className="bg-dark">
-                    <ProductCard.Image className="custom-image" />
-                    <ProductCard.Title title="Cafe 1" className="text-white text-bold" />
-                    <ProductCard.Buttons className="custom-buttons" />
-                </ProductCard>
-
                 {/* Técnica 1 componentes tradicionales */}
-                <ProductCard product={product} className="bg-dark ">
-                    <ProductImage
-                        className="custom-image"
-                        style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
-                    />
-                    <ProductTitle className="text-white text-bold" />
-                    <ProductButtons className="custom-buttons" />
-                </ProductCard>
+                {products.map((product) => (
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        className="bg-dark"
+                        onChange={onProductCountChange}
+                        // onChangeCustomState={onProductCountChange}
+                        value={shoppingCart[product.id]?.count}
+                    >
+                        <ProductImage
+                            className="custom-image"
+                            style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
+                        />
 
-                {/* Técnica 1 componentes tradicionales */}
-                <ProductCard
-                    product={product}
-                    className="bg-dark"
-                    style={{ backgroundColor: '#70D1F8' }}
-                >
-                    <ProductImage style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }} />
-                    <ProductTitle style={{ fontWeight: 'bold' }} />
-                    <ProductButtons
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'end',
-                        }}
-                    />
-                </ProductCard>
+                        <ProductTitle className="text-white text-bold" />
+                        <ProductButtons className="custom-buttons" />
+                    </ProductCard>
+                ))}
             </div>
+
+            {/* Cart  */}
+            <div className="shopping-cart">
+                {Object.entries(shoppingCart).map(([key, productInCart]) => (
+                    <ProductCard
+                        key={key}
+                        product={productInCart}
+                        className="bg-dark"
+                        style={{ width: '7rem' }}
+                        onChange={onProductCountChange}
+                        // onChangeCustomState={onProductCountChange}
+                        value={productInCart.count}
+                    >
+                        <ProductImage
+                            className="custom-image"
+                            style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
+                        />
+                        <ProductButtons
+                            className="custom-buttons"
+                            style={{ display: 'flex', justifyContent: 'center' }}
+                        />
+                    </ProductCard>
+                ))}
+            </div>
+
+            {/* <div>
+                <h6>{JSON.stringify(shoppingCart)}</h6>
+            </div> */}
         </div>
     )
 }

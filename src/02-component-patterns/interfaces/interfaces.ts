@@ -28,8 +28,11 @@ export interface ProductCardHOCProps {
     Buttons: (Props: ProductButtonsProps) => JSX.Element
 }
 
-
-
+/**Interface de onChange. Contiene el producto y cantidad seleccionada  */
+export interface onChangeArgs {
+    product: Product
+    count: number
+}
 
 
 
