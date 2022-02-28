@@ -25,16 +25,8 @@ export interface Props {
  * @param product: Product
  * @param onChange? () => void
  */
-export const ProductCard = ({
-    children,
-    className,
-    style,
-    product,
-    onChange,
-    onChangeCustomState,
-    value,
-}: Props) => {
-    const { counter, increaseBy } = useProduct({ product, onChange, onChangeCustomState, value })
+export const ProductCard = ({ children, className, style, product, onChange, value }: Props) => {
+    const { counter, increaseBy } = useProduct({ product, onChange, value })
 
     return (
         <Provider value={{ counter, increaseBy, product }}>

@@ -24,7 +24,6 @@ export const ShoppingPage = () => {
                         product={product}
                         className="bg-dark"
                         onChange={onProductCountChange}
-                        // onChangeCustomState={onProductCountChange}
                         value={shoppingCart[product.id]?.count}
                     >
                         <ProductImage
@@ -47,7 +46,6 @@ export const ShoppingPage = () => {
                         className="bg-dark"
                         style={{ width: '7rem' }}
                         onChange={onProductCountChange}
-                        // onChangeCustomState={onProductCountChange}
                         value={productInCart.count}
                     >
                         <ProductImage
