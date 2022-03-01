@@ -19,33 +19,10 @@ export const useShoppingCart = () => {
     /**Esta fn se pasa como referencia de la prop onChange de ProductCard */
     const onProductCountChange = ({ product, count }: onChangeArgs) => {
         setShoppingCart((prev) => {
-            // ----------------   onChange ------------------ //
-            /** onChange={onProductCountChange}
-             * el contador lo lleva adelante esta misma función
-             */
-            // Busqueda ó asignación de un nuevo producto con el contador en 0
-            const productInCart: ProductInCart = prev[product.id] || { ...product, count: 0 }
-
-            // Incremento ó decremento del contador con la prop count
-            productInCart.count += count
-
-            // Si count es <= 0 se borra el producto del carrito
-            if (productInCart.count <= 0) {
-                const { [product.id]: objectToDelete, ...restObject } = prev
-                return restObject
-            }
-
-            // De lo contrario se agrega o actualiza
-            return {
-                ...prev,
-                [product.id]: productInCart,
-            }
-            // ----------------   onChangeCustomState ------------------ //
             /** onChangeCustomState={onProductCountChange}
-             * el contador lo lleva adelante
-             * el customHook
+             * el contador lo lleva adelante el customHook
              */
-            /* if (!count) {
+            if (!count) {
                 // const { [product.id]: objectToDelete, ...restObject } = prev
                 delete prev[product.id]
                 return { ...prev }
@@ -54,7 +31,7 @@ export const useShoppingCart = () => {
             return {
                 ...prev,
                 [product.id]: { ...product, count },
-            } */
+            }
         })
     }
 

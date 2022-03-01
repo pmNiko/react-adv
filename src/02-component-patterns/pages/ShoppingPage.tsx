@@ -1,32 +1,26 @@
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from '../components/'
 import products from '../data/product'
 import '../styles/custom-styles.css'
-import { useShoppingCart } from '../hooks/useShoppingCart'
+
+const product = products[0]
 
 export const ShoppingPage = () => {
-    const { shoppingCart, onProductCountChange } = useShoppingCart()
-
     return (
         <div>
             <h1>Shopping Store</h1>
             <hr />
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
+
+            <ProductCard
+                key={product.id}
+                product={product}
+                className="bg-dark"
+                initialValues={{
+                    count: 4,
+                    maxCount: 10,
                 }}
             >
-                {/* Técnica 1 componentes tradicionales */}
-                {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        className="bg-dark"
-                        onChange={onProductCountChange}
-                        // onChangeCustomState={onProductCountChange}
-                        value={shoppingCart[product.id]?.count}
-                    >
+                {({ count, maxCount, isMaxCountReached, increaseBy, reset }): JSX.Element => (
+                    <>
                         <ProductImage
                             className="custom-image"
                             style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
@@ -34,37 +28,25 @@ export const ShoppingPage = () => {
 
                         <ProductTitle className="text-white text-bold" />
                         <ProductButtons className="custom-buttons" />
-                    </ProductCard>
-                ))}
-            </div>
+                        <button onClick={reset}>Volver a estado inicial</button>
+                        <button onClick={() => increaseBy(-2)}>-2</button>
 
-            {/* Cart  */}
-            <div className="shopping-cart">
-                {Object.entries(shoppingCart).map(([key, productInCart]) => (
-                    <ProductCard
-                        key={key}
-                        product={productInCart}
-                        className="bg-dark"
-                        style={{ width: '7rem' }}
-                        onChange={onProductCountChange}
-                        // onChangeCustomState={onProductCountChange}
-                        value={productInCart.count}
-                    >
-                        <ProductImage
-                            className="custom-image"
-                            style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
-                        />
-                        <ProductButtons
-                            className="custom-buttons"
-                            style={{ display: 'flex', justifyContent: 'center' }}
-                        />
-                    </ProductCard>
-                ))}
-            </div>
-
-            {/* <div>
-                <h6>{JSON.stringify(shoppingCart)}</h6>
-            </div> */}
+                        {isMaxCountReached ? (
+                            <>
+                                <br />
+                                <span style={{ color: 'red' }}>
+                                    Ha llegado a la cantidad maxima!
+                                </span>
+                            </>
+                        ) : (
+                            <button onClick={() => increaseBy(+2)}>+2</button>
+                        )}
+                        <span style={{ color: 'white' }}>
+                            {count} - {maxCount}
+                        </span>
+                    </>
+                )}
+            </ProductCard>
         </div>
     )
 }

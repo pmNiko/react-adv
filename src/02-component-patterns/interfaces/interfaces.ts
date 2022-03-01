@@ -7,6 +7,8 @@ import { Props as ProductButtonsProps } from '../components/ProductButtons'
 export interface ProductContextProps {
     counter: number
     increaseBy: (value: number) => void
+    maxCount?: number
+    isMaxCountReached: boolean
     product: Product
 }
 
@@ -34,7 +36,26 @@ export interface onChangeArgs {
     count: number
 }
 
+/**Interface de InitialValues
+ * @param count? number
+ * @param maxCount? number
+ */
+export interface InitialValues {
+    count: number
+    maxCount: number
+}
 
+
+/**Interfaces de children of ProductCard */
+export interface ProductCardHandlers {
+    count: number
+    isMaxCountReached: boolean
+    maxCount?: number
+    product: Product
+
+    increaseBy: (value: number) => void
+    reset: () => void
+}
 
 
 
