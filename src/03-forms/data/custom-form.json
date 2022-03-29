@@ -1,0 +1,69 @@
+[
+    {
+        "type": "input",
+        "name": "firstname",
+        "placeholder": "Nico",
+        "label": "First Name",
+        "value": "",
+        "validations": [
+            {
+                "type":  "required",
+                "message": "Campo requerido!"
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastname",
+        "placeholder": "Paneblanco",
+        "label": "Last Name",
+        "value": "",
+        "validations": [
+            {
+                "type":  "required",
+                "message": "Campo requerido!"
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "placeholder": "jose@email.com",
+        "label": "Email",
+        "value": "",
+        "validations": [
+            {
+                "type":  "required",
+                "message": "Campo requerido!"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "favoriteGames",
+        "label": "Favorite Games",
+        "value": "",
+        "validations": [
+            {
+                "type":  "required",
+                "message": "Campo requerido!"
+            }
+        ],
+        "options": [
+            {
+                "id": 1,
+                "description": "Super Smash" 
+            },
+            {
+                "id": 2,
+                "description": "Metal Gear"
+            },
+            {
+                "id": 1,
+                "description": "Resident Evil"
+            }
+        ]
+    }
+]
+
+
