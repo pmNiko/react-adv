@@ -9,6 +9,9 @@
             {
                 "type":  "required",
                 "message": "Campo requerido!"
+            },{
+                "type": "minLength",
+                "count": 5
             }
         ]
     },
@@ -35,7 +38,11 @@
             {
                 "type":  "required",
                 "message": "Campo requerido!"
+            },{
+                "type": "email",
+                "message": "Formato no aceptado."
             }
+
         ]
     },
     {

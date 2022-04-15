@@ -11,7 +11,8 @@ type Option = {
 
 type Validation = {
     type: string
-    message: string
+    message?: string
+    count?: number
 }
 
 interface FormProps {
@@ -34,9 +35,20 @@ for (const { name, value, validations } of formJson) {
 
     let schema = Yup.string()
 
-    for (const { type, message } of validations) {
-        if (type === 'required') {
-            schema = schema.required(message)
+    for (const rule of validations) {
+        if (rule.type === 'required') {
+            schema = schema.required(rule.message)
+        }
+
+        if (rule.type === 'minLenght') {
+            schema = schema.min(
+                (rule as any).count || 2,
+                `Minimo de ${(rule as any).count || 2} caracteres.`
+            )
+        }
+
+        if (rule.type === 'email') {
+            schema = schema.email(rule.message)
         }
     }
 
