@@ -25,7 +25,9 @@ interface FormProps {
     validations?: Validation[]
 }
 
+// Relleno el initialValues
 const initialValues: { [key: string]: any } = {}
+// Relleno las validaciones de campo.
 const requiredFields: { [key: string]: any } = {}
 
 for (const { name, value, validations } of formJson) {
@@ -55,6 +57,7 @@ for (const { name, value, validations } of formJson) {
     requiredFields[name] = schema
 }
 
+//  creo el eschema de validacion
 const validationSchema = Yup.object({ ...requiredFields })
 
 export const DyanamicForm = () => {
