@@ -43,7 +43,7 @@ for (const { name, value, validations } of formJson) {
         if (rule.type === 'minLenght') {
             schema = schema.min(
                 (rule as any).count || 2,
-                `Minimo de ${(rule as any).count || 2} caracteres.`
+                `${rule.message} ${(rule as any).count || 2} caracteres.`
             )
         }
 
